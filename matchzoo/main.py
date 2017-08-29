@@ -31,6 +31,11 @@ def load_model(config):
 
 
 def train(config):
+    """Train a model loaded via 'load_model'
+
+    # Arguments
+        config: Configuration dictionary.
+    """
     # read basic config
     global_conf = config["global"]
     optimizer = global_conf['optimizer']
@@ -263,12 +268,19 @@ def predict(config):
         sys.stdout.flush()
 
 def main(argv):
+    """The main function
+
+    # Arguments
+            argv: Including two parts:the phase(train or predict) and the file of model
+                argv can express like this:(--phase train --model_file models/arci.config)
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument('--phase', default='train', help='Phase: Can be train or predict, the default value is train.')
     parser.add_argument('--model_file', default='./models/matchzoo.model', help='Model_file: MatchZoo model file for the chosen model.')
     args = parser.parse_args()
     model_file =  args.model_file
     with open(model_file, 'r') as f:
+    # This will get the configuration information of the model
         config = json.load(f)
     phase = args.phase
     if args.phase == 'train':
