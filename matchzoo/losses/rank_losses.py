@@ -12,6 +12,16 @@ from keras.utils.generic_utils import deserialize_keras_object
 
 
 def rank_hinge_loss(y_true, y_pred):
+    #TODO：
+    """Calculate the hinge loss
+
+    # Arguments
+        y_true:
+        y_pred:
+
+    # Returns
+        The rank_hinge_loss
+    """
     #output_shape = K.int_shape(y_pred)
     y_pos = Lambda(lambda a: a[::2, :], output_shape= (1,))(y_pred) 
     y_neg = Lambda(lambda a: a[1::2, :], output_shape= (1,))(y_pred)
@@ -31,6 +41,17 @@ def deserialize(name, custom_objects=None):
 
 
 def get(identifier):
+    """Get the object of loss function
+
+       According to the identifier,you will get the
+       object of loss function.
+
+    # Arguments
+        identifier: The identifier of loss function
+
+    # Returns
+        The objective funciton
+    """
     if identifier is None:
         return None
     if isinstance(identifier, six.string_types):

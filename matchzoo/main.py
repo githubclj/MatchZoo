@@ -16,6 +16,17 @@ import metrics
 from losses import *
 
 def load_model(config):
+    """Loads a model
+
+    # Arguments
+        config: Configuration dictionary.
+
+    # Returns
+        When model type is 'JSON',returns a Keras model instance.
+        When model type is 'PY',create the object of corresponding model,
+        returns the model after calling the 'build()' function
+    """
+
     global_conf = config["global"]
     model_type = global_conf['model_type']
     if model_type == 'JSON':
@@ -107,8 +118,9 @@ def train(config):
         conf['data1'] = dataset[conf['text1_corpus']]
         conf['data2'] = dataset[conf['text2_corpus']]
         generator = inputs.get(conf['input_type'])
-        eval_gen[tag] = generator( config = conf )  
+        eval_gen[tag] = generator( config = conf )
 
+    ######### Load Model #########
     ######### Load Model #########
     model = load_model(config)
 
