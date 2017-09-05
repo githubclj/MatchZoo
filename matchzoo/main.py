@@ -110,7 +110,9 @@ def train(config):
         print conf
         conf['data1'] = dataset[conf['text1_corpus']]
         conf['data2'] = dataset[conf['text2_corpus']]
+        #get the object of generator
         generator = inputs.get(conf['input_type'])
+        #init the generator
         train_gen[tag] = generator( config = conf )
 
     for tag, conf in input_eval_conf.items():
