@@ -21,6 +21,17 @@ def deserialize(name, custom_objects=None):
                                     printable_module_name='loss function')
 
 def get(identifier):
+    """Get the object of generator
+
+       According to the identifier,you will get the
+       object of generator
+
+    # Arguments
+        identifier: The identifier of generator
+
+    # Returns
+        The object of generator
+    """
     if identifier is None:
         return None
     if isinstance(identifier, six.string_types):

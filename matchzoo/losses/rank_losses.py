@@ -50,7 +50,7 @@ def get(identifier):
         identifier: The identifier of loss function
 
     # Returns
-        The objective funciton
+        The objective funciton of loss
     """
     if identifier is None:
         return None

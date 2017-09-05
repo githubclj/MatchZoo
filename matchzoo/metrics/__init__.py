@@ -17,6 +17,17 @@ def deserialize(name, custom_objects=None):
                                     printable_module_name='loss function')
 
 def get(identifier):
+    """Get the object of metrics
+
+       According to the identifier,you will get the
+       object of metrics
+
+    # Arguments
+        identifier: The identifier of metrics
+
+    # Returns
+        The object of metrics
+    """
     if identifier is None:
         return None
     if isinstance(identifier, six.string_types):

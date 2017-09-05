@@ -11,6 +11,7 @@ class PairBasicGenerator(object):
         self.__name = 'PairBasicGenerator'
         self.config = config
         rel_file = config['relation_file']
+        #Read the relation file
         self.rel = read_relation(filename=rel_file)
         self.batch_size = config['batch_size']
         self.check_list = ['relation_file', 'batch_size']
@@ -29,6 +30,22 @@ class PairBasicGenerator(object):
                 return False
         return True
     def make_pair_static(self, rel):
+        """Transform the relation list
+
+           According to the lable's value,
+           such as rel has the record(0,d1,d2),(1,d1,d3)
+           we can get one pair like this(d1,d3,d2),
+           the document with high value of label regarded as positive sample
+           which match degree is higher
+
+        # Arguments
+            rel: The list of the relation,
+                each element is [(label,document1,document2]
+
+        # Returns
+            pair_list:The list of the relation with negative and positive sample
+                each element is [(document,document_pos,document_neg)]
+        """
         rel_set = {}
         pair_list = []
         for label, d1, d2 in rel:
