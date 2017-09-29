@@ -1,0 +1,13 @@
+#! /bin/sh
+set -e
+
+
+DOCDIR=/usr/share/doc/libpython-all-dbg
+DOCLINK=libpython-dbg
+
+if [ -d $DOCDIR ] && [ ! -L $DOCDIR ]; then
+    rmdir $DOCDIR
+    ln -s $DOCLINK $DOCDIR
+fi
+
+#DEBHELPER#
